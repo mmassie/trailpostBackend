@@ -1,12 +1,17 @@
-name: GitHub Actions Deploy Prod
+name: Deploy main branch serverless
+
 on:
   push:
     branches:
       - main
+
 jobs:
   deploy:
-    name: deploy
+    name: deployserver
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./server
     strategy:
       matrix:
         node-version: [16.x]
@@ -16,12 +21,8 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm install
-      - run: npm run build
-      - run: node ./node_modules/serverless/bin/serverless.js config credentials --provider aws --key ${{ secrets.AWS_ACCESS_KEY_ID }} --secret ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      - run: node ../../node_modules/serverless/bin/serverless.js deploy --stage prod --verbose
-        working-directory: ./serverless/backend-api
+      - run: yarn
+      - run: node ./node_modules/serverless/bin/serverless.js deploy --stage prod --verbose
         env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          SERVERLESS_ACCESS_KEY: ${{ secrets.SERVERLESS_ACCESS_KEY }}
           SLS_DEBUG: 1
