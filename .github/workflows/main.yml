@@ -1,20 +1,31 @@
-name: Deploy to Lambda v2
-
-on: push
-
-name: Deploy python lambda
-
+name: API
+on:
+  push:
+    branches:
+      - main
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
-
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
 
-    - uses: actions/checkout@v1
+      - name: Node.js setup
+        uses: actions/setup-node@v2.1.4
+        with:
+          node-version: 12.x
 
-    - name: Deploy to AWS
-      uses: wealize/deploy-lambda
-      env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      - name: Build
+        run: |
+          npm ci
+          npm run pack
+          cd dist && zip -r -9 api.zip *
+
+      - name: Update
+        uses: kazimanzurrashid/aws-lambda-update-action@v1
+        with:
+          zip-file: dist/api.zip
+        env:
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
