@@ -1,24 +1,20 @@
 name: Deploy to Lambda v2
---
 
-on: [push]
+on: push
+
+name: Deploy python lambda
 
 jobs:
-lambda_deployment:
+  build:
     runs-on: ubuntu-latest
-    name: deploy code in repo into a lambda function
+    timeout-minutes: 10
+
     steps:
-    - name: Code checkout
-        id: checkout
-        uses: actions/checkout@master
-    - name: Package code into zip
-        id: Package
-        run: zip -r package.zip lambda_function.py
-    - name: Deploy Lambda
-        id: Deploy
-        uses: embeddedinn/deploy_lambda@v1.0.0
-        with:
-          args: deploy
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+    - uses: actions/checkout@v1
+
+    - name: Deploy to AWS
+      uses: wealize/deploy-lambda
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
