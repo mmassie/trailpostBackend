@@ -11,22 +11,16 @@ exports.handler = async (event) => {
                 },
                 "prompt": {
                   "override": false,
-                  "content": {
-                    "card": {
-                      "title": "Card Title",
-                      "subtitle": "Card Subtitle",
-                      "text": "Card Content",
-                      "image": {
-                        "alt": "Google Assistant logo",
-                        "height": 0,
-                        "url": "https://developers.google.com/assistant/assistant_96.png",
-                        "width": 0
-                      }
-                    }
-                  },
                   "firstSimple": {
-                    "speech": "This is a card rich response.",
+                    "speech": "Hello World.",
                     "text": ""
+                  }
+                },
+                "scene": {
+                  "name": "SceneName",
+                  "slots": {},
+                  "next": {
+                    "name": "actions.scene.END_CONVERSATION"
                   }
                 }
               }
