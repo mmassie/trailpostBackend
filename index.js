@@ -1,4 +1,4 @@
-exports.handler = async (event) => {
+exports.handler = async (event, intent) => {
     // TODO implement
     const response = {
         statusCode: 200,
@@ -6,13 +6,13 @@ exports.handler = async (event) => {
         body: JSON.stringify(
             {
                 "session": {
-                  "id": "example_session_id",
+                  "id": "001",
                   "params": {}
                 },
                 "prompt": {
                   "override": false,
                   "firstSimple": {
-                    "speech": "I hear you're interested in Pleasant Valley's trail conditions.. that's coming soon.",
+                    "speech": "I hear you're interested in ", intent, "  trail conditions.. that's coming soon.",
                     "text": ""
                   }
                 },
