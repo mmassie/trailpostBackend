@@ -12,7 +12,7 @@ exports.handler = async (event) => {
                 "prompt": {
                   "override": false,
                   "firstSimple": {
-                    "speech": "Hello World.",
+                    "speech": "I hear you're interested in Plesant Valley's trail conditions.. that's coming soon.",
                     "text": ""
                   }
                 },
