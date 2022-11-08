@@ -11,7 +11,7 @@ exports.handler = async (event, intent) => {
                 "prompt": {
                   "override": false,
                   "firstSimple": {
-                    "speech": "I hear you're interested in Pleasant Valley trail conditions.. that's coming soon. Thanks, Mike.",
+                    "speech": "I hear you're interested in Pleasant Valley trail conditions... that's coming soon. In the mean time, go outside.",
                     "text": ""
                   }
                 },
@@ -27,14 +27,4 @@ exports.handler = async (event, intent) => {
         ),
     };
     return response;
-
-    // Listen for PV Trigger
-    
-    // Call Trailforks API with ID
-
-    // Store PV return value
-
-    // Return condition and last time updated
-
-
 };
