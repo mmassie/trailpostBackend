@@ -2,7 +2,6 @@ exports.handler = async (event, intent) => {
     // TODO implement
     const response = {
         statusCode: 200,
-        // body: JSON.stringify('Hello Mike,from the Trailpost Lambda API Server, via GitHub!'),
         body: JSON.stringify(
             {
                 "session": {
@@ -12,7 +11,7 @@ exports.handler = async (event, intent) => {
                 "prompt": {
                   "override": false,
                   "firstSimple": {
-                    "speech": "I hear you're interested in ", intent, "  trail conditions.. that's coming soon.",
+                    "speech": "I hear you're interested in ", intent.name, "  trail conditions.. that's coming soon.",
                     "text": ""
                   }
                 },
