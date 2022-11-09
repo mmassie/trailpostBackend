@@ -1,5 +1,4 @@
 exports.handler = async (event, intent) => {
-    // TODO implement
     const response = {
         statusCode: 200,
         body: JSON.stringify(
@@ -11,7 +10,7 @@ exports.handler = async (event, intent) => {
                 "prompt": {
                   "override": false,
                   "firstSimple": {
-                    "speech": "I hear you're interested in Pleasant Valley trail conditions... that's coming soon. In the mean time, go outside.",
+                    "speech": "Got it. Trail conditions at Lapham Peak are All Clear as of July 22",
                     "text": ""
                   }
                 },
