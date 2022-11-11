@@ -10,7 +10,7 @@ exports.handler = async (event, intent) => {
                 "prompt": {
                   "override": false,
                   "firstSimple": {
-                    "speech": "Got it. Trail conditions at Lapham Peak are Dry and All Clear as of July 22",
+                    "speech": "Got it. Trail conditions at Pleasant Valley are Dry and All Clear as of July 22",
                     "text": ""
                   }
                 },
