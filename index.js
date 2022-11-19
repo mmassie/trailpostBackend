@@ -14,7 +14,7 @@ exports.handler = async (event) => {
     // TODO
     const defaultOptions = {
         host: event.trailforks.com, //_hostname : example.com, passed from event as a parameter
-        port: 443, // or 80 for http
+        port: 80,
         headers: {
          'Content-Type': 'application/json',
         }
