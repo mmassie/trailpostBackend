@@ -19,7 +19,7 @@ exports.handler = async (event) => {
          'Content-Type': 'application/json',
         }
     }
-    var status_info = await getStatus(defaultOptions, event./widgets/trails_status/?rid=38974&data-displaytype=table&dataunsanctioned=1&data-officialonly=0&data-active=0&data-d=1&data-c=0&data-p=0, ''); //_pathname : /user/add, passed from event as a parameter
+    var status_info = await getStatus(defaultOptions, event./widgets/trails_status/?rid=38974, ''); //_pathname : /user/add, passed from event as a parameter
     // TODO implement
     const response = {
         statusCode: 200,
