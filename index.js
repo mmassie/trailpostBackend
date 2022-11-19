@@ -1,7 +1,7 @@
 const https = require('https');
 
 function getRequest() {
-  const url = 'https://www.trailforks.com/widgets/trails_status/?rid=38974&data-displaytype=table&dataunsanctioned=1&data-officialonly=0&data-active=0&data-d=1&data-c=0&data-p=0';
+  const url = 'https://www.trailforks.com/widgets/trailstatus/?trailid=140133&w=400px&h=20px&status=1&st=1&condition=1&ct=1&date=1';
 
   return new Promise((resolve, reject) => {
     const req = https.get(url, res => {
@@ -38,9 +38,9 @@ exports.handler = async event => {
       body: JSON.stringify(result),
     };
   } catch (error) {
-    console.log('Error is: 👉️', error);
+    console.log('Error is probably HTTP instead of JSON: 👉️', error);
     return {
-      statusCode: 400,
+      statusCode: 203,
       body: error.message,
     };
   }
