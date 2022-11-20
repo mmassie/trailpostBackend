@@ -1,7 +1,7 @@
 const https = require('https');
 
 function getRequest() {
-  const url = 'https://www.trailforks.com/api/1/trail_status?since=1000000000000&trailids=140133&api_key=docs';
+  const url = 'https://www.trailforks.com/api/1/trail?id=140133&scope=full&api_key=docs';
 
   return new Promise((resolve, reject) => {
     const req = https.get(url, res => {
