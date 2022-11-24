@@ -1,6 +1,7 @@
 const https = require('https');
 
 //Trail intents to trailid
+/*
 const trailNumber = {
     pleasantv : 140133;
     laphamp : 268524;
@@ -10,6 +11,7 @@ const trailNumber = {
     landmine : 5009;
     rusty : 5012;
 }
+*/
 
 const statusObj = {
     1 : "Clear / Green",
