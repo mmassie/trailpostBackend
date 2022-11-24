@@ -35,7 +35,7 @@ function getRequest() {
   });
 }
 
-/* exports.handler = async event => {
+/exports.handler = async event => {
   try {
     const result = await getRequest();
     console.log('result is: 👉️', result);
@@ -44,7 +44,7 @@ function getRequest() {
     return {
       statusCode: 200,
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(result),
+      body: JSON.stringify.alias, // body: JSON.stringify(result),
     };
   } catch (error) {
     console.log('Error is: 👉️', error);
@@ -53,8 +53,8 @@ function getRequest() {
       body: error.message,
     };
   }
-  */
-  exports.handler = async (event, intent) => {
+  
+ /* exports.handler = async (event, intent) => {
     const response = {
         statusCode: 200,
         body: JSON.stringify(
@@ -80,7 +80,7 @@ function getRequest() {
               }
               
         ),
-    };
+    }; */
     return response;
 };
 
