@@ -9,22 +9,6 @@ const flowerp = 523733;
 const landmine = 5009;
 const rusty = 5012;
 
-const condition = {
-    0 : "Unknown",
-    10 : "Snow Groomed",
-    1 : "Snow Packed",
-    7 : "Snow Covered",
-    12 : "Snow Cover Inadequate",
-    8 : "Freeze/thaw Cycle",
-    9 : "Icy",
-    2 : "Prevalent Mud",
-    3 : "Wet",
-    4 : "Variable",
-    11 : "Ideal",
-    5 : "Dry",
-    6 : "Very Dry"
-}
-
 
 function getRequest() {
   const url = 'https://www.trailforks.com/api/1/trail?id=140133&scope=full&api_key=docs';
@@ -56,7 +40,21 @@ exports.handler = async event => {
   try {
     const result = await getRequest();
     console.log('result is: 👉️', result);
-
+    let condition = {
+        0 : "Unknown",
+        10 : "Snow Groomed",
+        1 : "Snow Packed",
+        7 : "Snow Covered",
+        12 : "Snow Cover Inadequate",
+        8 : "Freeze/thaw Cycle",
+        9 : "Icy",
+        2 : "Prevalent Mud",
+        3 : "Wet",
+        4 : "Variable",
+        11 : "Ideal",
+        5 : "Dry",
+        6 : "Very Dry"
+    }
     // 👇️️ response structure assume you use proxy integration with API gateway
     return {
       statusCode: 200,
