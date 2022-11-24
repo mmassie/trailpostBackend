@@ -9,7 +9,7 @@ const flowerp = 523733;
 const landmine = 5009;
 const rusty = 5012;
 
-let conditionObj(result.data.condition) = {
+let conditionObj = {
     0 : "Unknown",
     10 : "Snow Groomed",
     1 : "Snow Packed",
@@ -70,7 +70,7 @@ exports.handler = async event => {
             "prompt": {
               "override": false,
               "firstSimple": {
-                "speech": "Got it. Trail conditions at " + result.data.title + " are rated at " + result.data.condition,
+                "speech": "Got it. Trail conditions at " + result.data.title + " are rated at " + conditionObj(result.data.condition),
                 "text": ""
               }
             },
