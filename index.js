@@ -9,20 +9,20 @@ const flowerp = 523733;
 const landmine = 5009;
 const rusty = 5012;
 
-let conditionObj = {
-    0 : "Unknown",
-    10 : "Snow Groomed",
-    1 : "Snow Packed",
-    7 : "Snow Covered",
-    12 : "Snow Cover Inadequate",
-    8 : "Freeze/thaw Cycle",
-    9 : "Icy",
-    2 : "Prevalent Mud",
-    3 : "Wet",
-    4 : "Variable",
-    11 : "Ideal",
-    5 : "Dry",
-    6 : "Very Dry"
+function condition = {
+    this.0 : "Unknown",
+    this.10 : "Snow Groomed",
+    this.1 : "Snow Packed",
+    this.7 : "Snow Covered",
+    this.12 : "Snow Cover Inadequate",
+    this.8 : "Freeze/thaw Cycle",
+    this.9 : "Icy",
+    this.2 : "Prevalent Mud",
+    this.3 : "Wet",
+    this.4 : "Variable",
+    this.11 : "Ideal",
+    this.5 : "Dry",
+    this.6 : "Very Dry"
 }
 
 
@@ -70,7 +70,7 @@ exports.handler = async event => {
             "prompt": {
               "override": false,
               "firstSimple": {
-                "speech": "Got it. Trail conditions at " + result.data.title + " are rated at " + result.data.condition,
+                "speech": "Got it. Trail conditions at " + result.data.title + " are rated at " + condition(result.data.condition),
                 "text": ""
               }
             },
