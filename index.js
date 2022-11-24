@@ -44,7 +44,28 @@ exports.handler = async event => {
     return {
       statusCode: 200,
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(result.data.alias),
+      body: JSON.stringify(
+        {
+            "session": {
+              "id": "001",
+              "params": {}
+            },
+            "prompt": {
+              "override": false,
+              "firstSimple": {
+                "speech": result.data.alias,
+                "text": ""
+              }
+            },
+            "scene": {
+              "name": "SceneName",
+              "slots": {},
+              "next": {
+                "name": "actions.scene.END_CONVERSATION"
+              }
+            }
+          }
+      ), //result.data.alias
     };
   } catch (error) {
     console.log('Error is probably HTTP instead of JSON: 👉️', error);
