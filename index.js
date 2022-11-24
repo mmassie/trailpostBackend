@@ -15,7 +15,7 @@ let condition = {
     1 : "Snow Packed",
     7 : "Snow Covered",
     12 : "Snow Cover Inadequate",
-    "8" : "Freeze/thaw Cycle",
+    8 : "Freeze/thaw Cycle",
     9 : "Icy",
     2 : "Prevalent Mud",
     3 : "Wet",
@@ -70,7 +70,7 @@ exports.handler = async event => {
             "prompt": {
               "override": false,
               "firstSimple": {
-                "speech": "Got it. Trail conditions at " + result.data.title + " are rated at " + result.data.condition,
+                "speech": "Got it. Trail conditions at " + result.data.title + " are rated at " + condition(result.data.condition),
                 "text": ""
               }
             },
