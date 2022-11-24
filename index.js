@@ -69,7 +69,7 @@ exports.handler = async event => {
             "prompt": {
               "override": false,
               "firstSimple": {
-                "speech": "Got it. Trail conditions at " + result.data.title + " are currently rated at " + conditionObj.['result.data.condition'],
+                "speech": "Got it. Trail conditions at " + result.data.title + " are currently rated at " + conditionObj['result.data.condition'],
                 "text": ""
               }
             },
