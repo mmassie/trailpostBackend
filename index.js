@@ -9,7 +9,7 @@ const flowerp = 523733;
 const landmine = 5009;
 const rusty = 5012;
 
-const conditionObj = {
+const condition = {
     0 : "Unknown",
     10 : "Snow Groomed",
     1 : "Snow Packed",
@@ -24,7 +24,6 @@ const conditionObj = {
     5 : "Dry",
     6 : "Very Dry"
 }
-
 
 
 function getRequest() {
