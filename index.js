@@ -44,7 +44,7 @@ function getRequest() {
     return {
       statusCode: 200,
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify.alias, // body: JSON.stringify(result),
+      body: JSON.stringify(result.alias),
     };
   } catch (error) {
     console.log('Error is: 👉️', error);
