@@ -53,7 +53,7 @@ exports.handler = async event => {
             "prompt": {
               "override": false,
               "firstSimple": {
-                "speech": result.data.alias,
+                "speech": "Got it. Trail conditions at" + result.data.alias ,
                 "text": ""
               }
             },
