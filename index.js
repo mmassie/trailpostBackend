@@ -9,7 +9,7 @@ const flowerp = 523733;
 const landmine = 5009;
 const rusty = 5012;
 
-function conditionObj(result.data.condition) = {
+const conditionObj(result.data.condition) = {
     0 : "Unknown",
     10 : "Snow Groomed",
     1 : "Snow Packed",
