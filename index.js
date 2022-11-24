@@ -9,7 +9,7 @@ const flowerp = 523733;
 const landmine = 5009;
 const rusty = 5012;
 
-const conditionObj(result.data.condition) = {
+const conditionObj = {
     0 : "Unknown",
     10 : "Snow Groomed",
     1 : "Snow Packed",
@@ -24,6 +24,7 @@ const conditionObj(result.data.condition) = {
     5 : "Dry",
     6 : "Very Dry"
 }
+
 
 
 function getRequest() {
@@ -70,7 +71,7 @@ exports.handler = async event => {
             "prompt": {
               "override": false,
               "firstSimple": {
-                "speech": "Got it. Trail conditions at " + result.data.title + " are rated at " + conditionObj,
+                "speech": "Got it. Trail conditions at " + result.data.title + " are rated at " + result.data.condition,
                 "text": ""
               }
             },
