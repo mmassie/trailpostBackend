@@ -35,7 +35,7 @@ function getRequest() {
   });
 }
 
-/exports.handler = async event => {
+exports.handler = async event => {
   try {
     const result = await getRequest();
     console.log('result is: 👉️', result);
@@ -44,44 +44,13 @@ function getRequest() {
     return {
       statusCode: 200,
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(result.alias),
+      body: JSON.stringify(result.data.alias),
     };
   } catch (error) {
-    console.log('Error is: 👉️', error);
+    console.log('Error is probably HTTP instead of JSON: 👉️', error);
     return {
       statusCode: 203,
       body: error.message,
     };
   }
-  
- /* exports.handler = async (event, intent) => {
-    const response = {
-        statusCode: 200,
-        body: JSON.stringify(
-            {
-                "session": {
-                  "id": "001",
-                  "params": {}
-                },
-                "prompt": {
-                  "override": false,
-                  "firstSimple": {
-                    "speech": res.on.alias // "Got it. Trail conditions at Pleasant Valley are Dry and All Clear as of July 22",
-                    "text": ""
-                  }
-                },
-                "scene": {
-                  "name": "SceneName",
-                  "slots": {},
-                  "next": {
-                    "name": "actions.scene.END_CONVERSATION"
-                  }
-                }
-              }
-              
-        ),
-    }; */
-    return response;
-};
-
 };
