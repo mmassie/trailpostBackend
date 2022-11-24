@@ -1,13 +1,22 @@
 const https = require('https');
 
 //Trail intents to trailid
-const pleasantv = 140133;
-const laphamp = 268524;
-const minooka = 50215;
-const hurl = 5007;
-const flowerp = 523733;
-const landmine = 5009;
-const rusty = 5012;
+const trailNumber = {
+    pleasantv : 140133;
+    laphamp : 268524;
+    minooka : 50215;
+    hurl : 5007;
+    flowerp : 523733;
+    landmine : 5009;
+    rusty : 5012;
+}
+
+const statusObj = {
+    1 : "Clear / Green",
+    2 : "Minor Issue / Yellow",
+    3 : "Significant Issue / Amber",
+    4 : "Closed"
+}
 
 const conditionObj = {
     0 : "Unknown",
@@ -69,7 +78,7 @@ exports.handler = async event => {
             "prompt": {
               "override": false,
               "firstSimple": {
-                "speech": "Got it. Trail conditions at " + result.data.title + " are currently rated at: " + conditionObj[result.data.condition],
+                "speech": "Got it. Trail conditions at " + result.data.title + " are currently rated at: " + statusObj[result.data.status] + " & " + conditionObj[result.data.condition],
                 "text": ""
               }
             },
