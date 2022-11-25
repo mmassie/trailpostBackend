@@ -1,6 +1,6 @@
 const https = require('https');
 
-const trailNumber = {
+const trailName = {
     pleasantv : 140133,
     laphamp : 268524,
     minooka : 50215,
