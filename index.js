@@ -1,17 +1,17 @@
 const https = require('https');
 
-//Trail intents to trailid
-/*
 const trailNumber = {
-    pleasantv : 140133;
-    laphamp : 268524;
-    minooka : 50215;
-    hurl : 5007;
-    flowerp : 523733;
-    landmine : 5009;
-    rusty : 5012;
+    pleasantv : 140133,
+    laphamp : 268524,
+    minooka : 50215,
+    hurl : 5007,
+    flowerp : 523733,
+    landmine : 5009,
+    rusty : 5012
 }
-*/
+// trailName[requestJson.name]
+//
+
 
 const statusObj = {
     1 : "Clear / Green",
@@ -37,8 +37,8 @@ const conditionObj = {
 }
 
 function getRequest() {
-  const url = 'https://www.trailforks.com/api/1/trail?id=140133&scope=full&api_key=docs';
-
+//const url = 'https://www.trailforks.com/api/1/trail?id=140133&scope=full&api_key=docs';
+const url = 'https://www.trailforks.com/api/1/trail?id=' + trailName[requestJson.name] + '&scope=full&api_key=docs';
   return new Promise((resolve, reject) => {
     const req = https.get(url, res => {
       let rawData = '';
