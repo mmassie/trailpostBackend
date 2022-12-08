@@ -1,8 +1,6 @@
-const https = require('https');
+const axios = require("axios");
 
-//Trail intents to trailid
-
-const trailNumber = {
+const trailName = {
     pleasantv : 140133,
     laphamp : 268524,
     minooka : 50215,
@@ -25,7 +23,7 @@ const conditionObj = {
     1 : "Snow Packed",
     7 : "Snow Covered",
     12 : "Snow Cover Inadequate",
-    8 : "Freeze/Thaw Cycle",
+    8 : "Freeze/thaw Cycle",
     9 : "Icy",
     2 : "Prevalent Mud",
     3 : "Wet",
@@ -35,8 +33,22 @@ const conditionObj = {
     6 : "Very Dry"
 }
 
+async function getRequest() {
+const url = 'https://www.trailforks.com/api/1/trail?id=140133&scope=full&api_key=docs';
+// const url = 'https://www.trailforks.com/api/1/trail?id=' + trailName[responseJson.intent.query] + '&scope=full&api_key=docs';
+    try {
+      const response = await axios.get(url);
+      console.log(response);
+      return JSON.parse(response);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+
+/* 
 function getRequest() {
-  const url = 'https://www.trailforks.com/api/1/trail?id=140133&scope=full&api_key=docs';
+const url = 'https://www.trailforks.com/api/1/trail?id=140133&scope=full&api_key=docs';
 // const url = 'https://www.trailforks.com/api/1/trail?id=' + trailName[responseJson.intent.query] + '&scope=full&api_key=docs';
   return new Promise((resolve, reject) => {
     const req = https.get(url, res => {
@@ -60,13 +72,13 @@ function getRequest() {
     });
   });
 }
+*/
 
 exports.handler = async event => {
   try {
     const result = await getRequest();
     console.log(JSON.stringify(event))
 
-    // 👇️️ response structure assume you use proxy integration with API gateway
     return {
       statusCode: 200,
       headers: {'Content-Type': 'application/json'},
