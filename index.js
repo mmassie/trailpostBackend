@@ -65,7 +65,7 @@ const url = 'https://www.trailforks.com/api/1/trail?id=140133&scope=full&api_key
 exports.handler = async event => {
   try {
     const result = await getRequest();
-    console.log('result is: 👉️', result);
+    console.log(JSON.stringify(event))
 
     // 👇️️ response structure assume you use proxy integration with API gateway
     return {
