@@ -64,7 +64,8 @@ function getRequest() {
 exports.handler = async event => {
   try {
     const result = await getRequest();
-    // console.log(JSON.stringify(event))
+    console.log(JSON.stringify(event));
+    console.log(event);
 
     // 👇️️ response structure assume you use proxy integration with API gateway
     return {
