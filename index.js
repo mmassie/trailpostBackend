@@ -5,7 +5,7 @@ const trailNumber = {
     PV : 140133,
     laphamp : 268524,
     Minooka : 50215,
-    hurl : 5007,
+    Hurl : 5007,
     flowerp : 523733,
     landmine : 5009,
     rusty : 5012
