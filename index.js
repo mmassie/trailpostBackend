@@ -2,7 +2,7 @@ const https = require('https');
 
 // var trailRequest = "Landmine"; 
 const trailNumber = {
-    PV : 140133,
+    PleasantValley : 140133,
     LaphamPeak : 268524,
     Minooka : 50215,
     Hurl : 5007,
