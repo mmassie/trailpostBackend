@@ -1,6 +1,6 @@
 const https = require('https');
 
-var trailRequest = "Hurl"; //i think i have a global-nested issue here. I can't pass up my non-global value into here
+var trailRequest = "Landmine"; //i think i have a global-nested issue here. I can't pass up my non-global value into here
 const trailNumber = {
     PV : 140133,
     LaphamPeak : 268524,
