@@ -62,13 +62,13 @@ const url = 'https://www.trailforks.com/api/1/trail?id=' + trailNumber[trailRequ
 
 exports.handler = async event => {
   try {
-    const result = await getRequest();
+    //const result = await getRequest();
     console.log(JSON.stringify(event));
     console.log(JSON.stringify(JSON.parse(event.body)));
 
     let trailRequest = JSON.parse(event.body).intent.name;
     console.log(trailRequest);
-    await getRequest(trailRequest)
+    const result = await getRequest(trailRequest)
 
     return {
       statusCode: 200,
