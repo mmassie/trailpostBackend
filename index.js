@@ -1,7 +1,8 @@
 const https = require('https');
 
-//Trail intents to trailid
-var trailRequest = 50215;
+
+var trailRequest = Minooka;
+
 const trailNumber = {
     pleasantv : 140133,
     laphamp : 268524,
@@ -36,8 +37,8 @@ const conditionObj = {
 }
 
 function getRequest() {
-//  const url = 'https://www.trailforks.com/api/1/trail?id=140133&scope=full&api_key=docs';
-const url = 'https://www.trailforks.com/api/1/trail?id=' + trailNumber[trailRequest] + '&scope=full&api_key=docs';
+const url = 'https://www.trailforks.com/api/1/trail?id=140133&scope=full&api_key=docs';
+//const url = 'https://www.trailforks.com/api/1/trail?id=' + trailNumber[trailRequest] + '&scope=full&api_key=docs';
   return new Promise((resolve, reject) => {
     const req = https.get(url, res => {
       let rawData = '';
@@ -83,7 +84,7 @@ exports.handler = async event => {
             "prompt": {
               "override": false,
               "firstSimple": {
-                "speech": "Got it. The trail status at " + result.data.title + " is currently: " + statusObj[result.data.status] + ", with conditions rated as " + conditionObj[result.data.condition],
+                "speech": "Got it. The trail status at " + trailRequest + " is currently: " + statusObj[result.data.status] + ", with conditions rated as " + conditionObj[result.data.condition],
                 "text": ""
               }
             },
