@@ -66,7 +66,7 @@ exports.handler = async event => {
     const result = await getRequest();
     console.log(JSON.stringify(event));
     console.log(JSON.stringify(JSON.parse(event.body)));
-    console.log(event.body.intent.name);
+    console.log(event.body.intent);
 
     return {
       statusCode: 200,
