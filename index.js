@@ -5,7 +5,7 @@ const https = require('https');
 const trailNumber = {
     pleasantv : 140133,
     laphamp : 268524,
-    minooka : 50215,
+    Minooka : 50215,
     hurl : 5007,
     flowerp : 523733,
     landmine : 5009,
