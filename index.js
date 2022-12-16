@@ -65,8 +65,9 @@ exports.handler = async event => {
   try {
     const result = await getRequest();
     console.log(JSON.stringify(event));
-    console.log(event);
-    console.log(JSON.stringify(JSON.parse(event.body)))
+    console.log(JSON.stringify(JSON.parse(event.body)));
+    console.log(JSON.stringify(JSON.parse(event.body.handler.name)));
+
 
     // 👇️️ response structure assume you use proxy integration with API gateway
     return {
