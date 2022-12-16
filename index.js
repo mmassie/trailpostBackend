@@ -1,14 +1,14 @@
 const https = require('https');
 
-var trailRequest = "hurl";
+var trailRequest = "LaphamPeak"; //i think i have a hoisting issue here. I can't pass up my non-global value into here
 const trailNumber = {
     PV : 140133,
-    laphamp : 268524,
+    LaphamPeak : 268524,
     Minooka : 50215,
     Hurl : 5007,
-    flowerp : 523733,
-    landmine : 5009,
-    rusty : 5012
+    FlowerPower : 523733,
+    Landmine : 5009,
+    Rusty : 5012
 }
 
 const statusObj = {
