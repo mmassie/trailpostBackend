@@ -1,6 +1,6 @@
 const https = require('https');
 
-var trailRequest = "";
+var trailRequest = Minooka;
 const trailNumber = {
     PV : 140133,
     laphamp : 268524,
