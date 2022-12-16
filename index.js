@@ -66,7 +66,8 @@ exports.handler = async event => {
     const result = await getRequest();
     console.log(JSON.stringify(event));
     console.log(JSON.stringify(JSON.parse(event.body)));
-    console.log(result)
+    const payload = JSON.stringify(JSON.parse(event.body);
+    console.log(payload);
 
     return {
       statusCode: 200,
