@@ -1,6 +1,6 @@
 const https = require('https');
 
-var trailRequest = "Landmine"; //i think i have a global-nested issue here. I can't pass up my non-global value into here
+// var trailRequest = "Landmine"; 
 const trailNumber = {
     PV : 140133,
     LaphamPeak : 268524,
@@ -34,7 +34,7 @@ const conditionObj = {
     6 : "Very Dry"
 }
 
-function getRequest() {
+function getRequest(trailRequest) {
 //const url = 'https://www.trailforks.com/api/1/trail?id=140133&scope=full&api_key=docs';
 const url = 'https://www.trailforks.com/api/1/trail?id=' + trailNumber[trailRequest] + '&scope=full&api_key=docs';
   return new Promise((resolve, reject) => {
@@ -62,13 +62,13 @@ const url = 'https://www.trailforks.com/api/1/trail?id=' + trailNumber[trailRequ
 
 exports.handler = async event => {
   try {
-    const result = await getRequest();
+    //const result = await getRequest();
     console.log(JSON.stringify(event));
     console.log(JSON.stringify(JSON.parse(event.body)));
 
-    trailRequest = JSON.parse(event.body).intent.name;
+    let trailRequest = JSON.parse(event.body).intent.name; //please go global. lol
     console.log(trailRequest);
-    
+    await getRequest(trailRequest)
 
     return {
       statusCode: 200,
