@@ -37,7 +37,7 @@ const conditionObj = {
 
 function getRequest() {
 //  const url = 'https://www.trailforks.com/api/1/trail?id=140133&scope=full&api_key=docs';
-const url = 'https://www.trailforks.com/api/1/trail?id=' + trailName[trailRequest] + '&scope=full&api_key=docs';
+const url = 'https://www.trailforks.com/api/1/trail?id=' + trailNumber[trailRequest] + '&scope=full&api_key=docs';
   return new Promise((resolve, reject) => {
     const req = https.get(url, res => {
       let rawData = '';
@@ -66,7 +66,7 @@ exports.handler = async event => {
     const result = await getRequest();
     console.log(JSON.stringify(event));
     console.log(JSON.stringify(JSON.parse(event.body)));
-    
+
     var trailRequest = JSON.parse(event.body).intent.name;
     console.log(trailRequest);
     
