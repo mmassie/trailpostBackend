@@ -66,9 +66,9 @@ exports.handler = async event => {
     console.log(JSON.stringify(event));
     console.log(JSON.stringify(JSON.parse(event.body)));
 
-    let trailRequest = JSON.parse(event.body).intent.name; //please go global. lol
+    let trailRequest = JSON.parse(event.body).intent.name;
     console.log(trailRequest);
-    await getRequest(trailRequest)
+    //await getRequest(trailRequest)
 
     return {
       statusCode: 200,
