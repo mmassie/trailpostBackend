@@ -65,11 +65,11 @@ exports.handler = async event => {
     //const result = await getRequest();
     console.log(JSON.stringify(event));
     console.log(JSON.stringify(JSON.parse(event.body)));
-    console.log(result.data);
 
     let trailRequest = JSON.parse(event.body).intent.name;
     console.log(trailRequest);
-    const result = await getRequest(trailRequest)
+    const result = await getRequest(trailRequest);
+    console.log(result.data.last_report_ts);
 
     return {
       statusCode: 200,
