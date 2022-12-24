@@ -65,6 +65,7 @@ exports.handler = async event => {
     //const result = await getRequest();
     console.log(JSON.stringify(event));
     console.log(JSON.stringify(JSON.parse(event.body)));
+    console.log(result.data);
 
     let trailRequest = JSON.parse(event.body).intent.name;
     console.log(trailRequest);
