@@ -84,7 +84,7 @@ exports.handler = async event => {
             "prompt": {
               "override": false,
               "firstSimple": {
-                "speech": "Got it. The trail status at " + trailRequest + " is currently: " + statusObj[result.data.status] + ", with conditions rated as " + conditionObj[result.data.condition] + ".Last updated on " + lastPost,
+                "speech": "Got it. The trail status at " + trailRequest + " is currently: " + statusObj[result.data.status] + ", with conditions rated as " + conditionObj[result.data.condition] + ".Last updated on " + lastPost.toLocaleString(),
                 "text": ""
               }
             },
