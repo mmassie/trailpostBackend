@@ -69,7 +69,6 @@ exports.handler = async event => {
     console.log(trailRequest);
     const result = await getRequest(trailRequest);
 
-    //let lastPost = new Date(result.data.last_report_ts * 1000);
     let postEpoch = result.data.last_report_ts;
     let date = new Date(postEpoch * 1000);
     let lastPost = date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear()
