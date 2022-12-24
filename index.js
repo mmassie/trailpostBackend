@@ -70,11 +70,9 @@ exports.handler = async event => {
     const result = await getRequest(trailRequest);
 
     //let lastPost = new Date(result.data.last_report_ts * 1000);
-    let myDate = new Date( result.data.last_report_ts );
-    let lastPost = (myDate.getMonth() + 1) + "/" + myDate.getDate();
-    console.log(myDate.getMonth);
-    console.log(myDate);
-    console.log(lastPost);
+    let postEpoch = result.data.last_report_ts;
+    let date = new Date(postEpoch * 1000);
+    let lastPost = date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear()
 
     return {
       statusCode: 200,
