@@ -69,12 +69,12 @@ exports.handler = async event => {
     let trailRequest = JSON.parse(event.body).intent.name;
     console.log(trailRequest);
     const result = await getRequest(trailRequest);
-    console.log(result.data.last_report_ts);
 
     let milliseconds = result.data.last_report_ts;
     let myDate = new Date( milliseconds );
 
     let dateStr = (myDate.getMonth() + 1) + "/" + myDate.getDate();
+    console.log(milliseconds);
 
     return {
       statusCode: 200,
