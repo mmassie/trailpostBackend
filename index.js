@@ -70,11 +70,7 @@ exports.handler = async event => {
     console.log(trailRequest);
     const result = await getRequest(trailRequest);
 
-    let milliseconds = result.data.last_report_ts;
-    let myDate = new Date( milliseconds );
-
-    let dateStr = (myDate.getMonth() + 1) + "/" + myDate.getDate();
-    console.log(dateStr);
+    let lastPost = new Date(result.data.last_report_ts * 1000);
 
     return {
       statusCode: 200,
@@ -88,7 +84,7 @@ exports.handler = async event => {
             "prompt": {
               "override": false,
               "firstSimple": {
-                "speech": "Got it. The trail status at " + trailRequest + " is currently: " + statusObj[result.data.status] + ", with conditions rated as " + conditionObj[result.data.condition] + ".Last updated on " + dateStr,
+                "speech": "Got it. The trail status at " + trailRequest + " is currently: " + statusObj[result.data.status] + ", with conditions rated as " + conditionObj[result.data.condition] + ".Last updated on " + lastPost,
                 "text": ""
               }
             },
