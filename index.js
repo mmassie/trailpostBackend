@@ -74,7 +74,7 @@ exports.handler = async event => {
     let myDate = new Date( milliseconds );
 
     let dateStr = (myDate.getMonth() + 1) + "/" + myDate.getDate();
-    console.log(milliseconds);
+    console.log(dateStr);
 
     return {
       statusCode: 200,
@@ -88,7 +88,7 @@ exports.handler = async event => {
             "prompt": {
               "override": false,
               "firstSimple": {
-                "speech": "Got it. The trail status at " + trailRequest + " is currently: " + statusObj[result.data.status] + ", with conditions rated as " + conditionObj[result.data.condition] + ".Last update on, " + dateStr,
+                "speech": "Got it. The trail status at " + trailRequest + " is currently: " + statusObj[result.data.status] + ", with conditions rated as " + conditionObj[result.data.condition] + ".Last updated on " + dateStr,
                 "text": ""
               }
             },
