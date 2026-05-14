@@ -1,6 +1,5 @@
 const https = require('https');
 
-// var trailRequest = "Landmine"; 
 const trailNumber = {
     PleasantValley : 140133,
     LaphamPeak : 268524,
@@ -35,8 +34,7 @@ const conditionObj = {
 }
 
 function getRequest(trailRequest) {
-//const url = 'https://www.trailforks.com/api/1/trail?id=140133&scope=full&api_key=docs';
-const url = 'https://www.trailforks.com/api/1/trail?id=' + trailNumber[trailRequest] + '&scope=full&api_key=docs';
+  const url = `https://www.trailforks.com/api/1/trail?id=${trailNumber[trailRequest]}&scope=full&api_key=docs`;
   return new Promise((resolve, reject) => {
     const req = https.get(url, res => {
       let rawData = '';
@@ -49,60 +47,62 @@ const url = 'https://www.trailforks.com/api/1/trail?id=' + trailNumber[trailRequ
         try {
           resolve(JSON.parse(rawData));
         } catch (err) {
-          reject(new Error(err));
+          reject(err);
         }
       });
     });
 
     req.on('error', err => {
-      reject(new Error(err));
+      reject(err);
     });
   });
 }
 
 exports.handler = async event => {
   try {
-    //console.log(JSON.stringify(event));
-    //console.log(JSON.stringify(JSON.parse(event.body)));
+    const trailRequest = JSON.parse(event.body).intent.name;
 
-    let trailRequest = JSON.parse(event.body).intent.name;
-    console.log(trailRequest);
+    if (!trailNumber[trailRequest]) {
+      return {
+        statusCode: 400,
+        body: JSON.stringify({ error: `Unknown trail: ${trailRequest}` }),
+      };
+    }
+
     const result = await getRequest(trailRequest);
 
-    let postEpoch = result.data.last_report_ts;
-    let date = new Date(postEpoch * 1000);
-    let lastPost = date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear()
+    if (!result.data) {
+      throw new Error('Unexpected API response: missing data field');
+    }
+
+    const date = new Date(result.data.last_report_ts * 1000);
+    const lastPost = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+    const status = statusObj[result.data.status] ?? 'Unknown';
+    const condition = conditionObj[result.data.condition] ?? 'Unknown';
 
     return {
       statusCode: 200,
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(
-        {
-            "session": {
-              "id": "001",
-              "params": {}
-            },
-            "prompt": {
-              "override": false,
-              "firstSimple": {
-                "speech": "Got it. The trail status at " + trailRequest + " is currently: " + statusObj[result.data.status] + ", with conditions rated as " + conditionObj[result.data.condition] + ". Last updated on " + lastPost,
-                "text": ""
-              }
-            },
-            "scene": {
-              "name": "SceneName",
-              "slots": {},
-              "next": {
-                "name": "actions.scene.END_CONVERSATION"
-              }
-            }
+      body: JSON.stringify({
+        session: { id: "001", params: {} },
+        prompt: {
+          override: false,
+          firstSimple: {
+            speech: `Got it. The trail status at ${trailRequest} is currently: ${status}, with conditions rated as ${condition}. Last updated on ${lastPost}`,
+            text: ""
           }
-      ), //result.data.alias
+        },
+        scene: {
+          name: "SceneName",
+          slots: {},
+          next: { name: "actions.scene.END_CONVERSATION" }
+        }
+      }),
     };
   } catch (error) {
-    console.log('Error is probably HTTP instead of JSON: 👉️', error);
+    console.error('Handler error:', error);
     return {
-      statusCode: 203,
+      statusCode: 500,
       body: error.message,
     };
   }
